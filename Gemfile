@@ -32,6 +32,8 @@ gem "font-awesome-sass"
 
 gem "faker"
 
+gem 'figaro'
+
 gem 'stripe'
 # Use ActiveModel has_secure_password
 gem "bcrypt", "~> 3.1.7"
@@ -77,6 +79,7 @@ group :development do
 end
 
 group :production do
+  gem 'pg'
   gem "rails_12factor"
   # Use Puma webserver
   gem "puma"

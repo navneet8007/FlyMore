@@ -28,12 +28,12 @@
 		    </article>
 		    <div class="row">
 		        <div class="col l5 bold">Total Amount</div>
-		        <div class="col l7">INR <%= @booking.flight.price * @booking.passengers.count %> </div>
+		        <div class="col l7">$<%= @booking.flight.price * @booking.passengers.count %> </div>
 		    </div>
 		    <div class="row">
 		        <div class="col l5 bold"></div>
 		        <div class="col l7">
-		            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="<%= Rails.configuration.stripe[:publishable_key] %>" data-description="Fly More Payment" data-amount=<%= @booking.flight.price * @booking.passengers.count %> data-locale="auto"></script>
+		            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="<%= Rails.configuration.stripe[:publishable_key] %>" data-description="Fly More Payment" data-amount=<%= (@booking.flight.price * @booking.passengers.count)*100 %> data-locale="auto"></script>
 		        </div>
 		    </div>
 	    <% end %>
