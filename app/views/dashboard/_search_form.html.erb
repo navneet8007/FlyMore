@@ -1,0 +1,22 @@
+<div class="row">
+  <%= form_for @presenter.flight, url: search_flights_path, remote: true, method: :get do |f|%>
+    <div class="col l4">
+      <%= f.select :origin_airport_id, list_airports, { prompt: "Select Origin Airport", include_blank: "All"}, { required: "required", class: "home-input browser-default" } %>
+    </div>
+    <div class="col l4">
+      <%= f.select :destination_airport_id, list_airports, { prompt: "Select Destination Airport", include_blank: "All"}, { required: "required", class: "home-input browser-default" } %>
+    </div>
+    <div class="col l2">
+      <%= f.date_field :departure_datetime, { class: "datepicker home-input", placeholder: "Travel Date" } %>
+    </div>
+    <div class="col l1">
+      <%= f.number_field :available_seats, { value: 1, placeholder: "Number of Travelers", class: "home-input", required: "required", min: 1 } %>
+    </div>
+    <div class="col l1">
+      <%= f.button class: "btn"  do %>
+        <i class="material-icons up-left-rotate">send</i>
+      <% end %>
+      
+    </div>
+  <% end %>
+</div>

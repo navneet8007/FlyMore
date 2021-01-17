@@ -1,0 +1,13 @@
+<div class="">
+  <div class="container">
+    <div class="">
+      <h5>Flight Time Board</h5>
+      <div id="flight-time-board">
+        <%= render @presenter.flight %>
+        <div class="digg-pagination paging">
+          <%= will_paginate @presenter.flights %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

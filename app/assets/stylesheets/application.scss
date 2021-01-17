@@ -1,0 +1,24 @@
+@import "materialize";
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "dashboard";
+@import "bookings";
+@import "users";
+@import "flights";
+
+.pull-right{
+	margin: 0px 160px;
+} 
+
+.dropdown-button-{
+	margin: -4px 28px;
+}
+
+.nav-color{
+  background-color: #0a1777;
+}
+
+.dashboard-body{
+  background-color: white;
+}

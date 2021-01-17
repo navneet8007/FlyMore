@@ -1,0 +1,42 @@
+<div class="container body">
+  <div class="row booking">
+    
+    <div class="col l8" id="passengers">
+      <%= render "bookings/passengers" %>
+    </div>
+    
+    <div class="col l4">
+      <h5>Flight Details</h5>
+      
+      <%= render "bookings/flight_details" %>
+
+      <div class="row">
+        <div class="col l5 bold">Booking Number</div>
+        <div class="col l7">
+          <%= @booking.booking_number %>
+        </div>
+      </div>
+
+      <h5>Payment</h5>
+        <%= form_tag charges_path do %>
+		    <article>
+			    <% if flash[:error].present? %>
+			      <div id="error_explanation">
+			        <p><%= flash[:error] %></p>
+			      </div>
+			    <% end %>
+		    </article>
+		    <div class="row">
+		        <div class="col l5 bold">Total Amount</div>
+		        <div class="col l7">INR <%= @booking.flight.price * @booking.passengers.count %> </div>
+		    </div>
+		    <div class="row">
+		        <div class="col l5 bold"></div>
+		        <div class="col l7">
+		            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="<%= Rails.configuration.stripe[:publishable_key] %>" data-description="Fly More Payment" data-amount=<%= @booking.flight.price * @booking.passengers.count %> data-locale="auto"></script>
+		        </div>
+		    </div>
+	    <% end %>
+    </div>
+  </div>
+</div>

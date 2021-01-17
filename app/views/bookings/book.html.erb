@@ -1,0 +1,52 @@
+<div class="container body">
+  <div class="row booking">
+    <%= form_for @booking do |f| %>
+    <%= f.hidden_field :flight_id %>
+      <div class="col l8" id="passengers">
+        <h5>Passengers Details</h5>
+        <% if current_user.nil? %>
+          <p>
+            <strong>As you are not logged in, note the following:</strong><br>
+            1. The book confirmation mail will be sent to the first passenger email you enter here.
+          </p>
+        <% end %>
+        <%= f.fields_for :passengers do |p| %>
+          <div class="passenger-div">
+            <div>
+              <%= p.hidden_field :id %>
+              <%= p.text_field :name, placeholder: "Passenger Name", required: "required" %>
+            </div>
+            <div class="row">
+              <div class="col l6">
+                <%= p.email_field :email, placeholder: "Email Address", required: "required" %>
+              </div>
+              <div class="col l6">
+                <%= p.telephone_field :phone, placeholder: "Phone Number" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="col l4">
+        <h5>Flight Details</h5>
+        
+        <%= render "flight_details" %>
+
+        <div class="row">
+          <div class="col l5 bold">Flight Price</div>
+          <div class="col l7">INR <%= @booking.flight.price %> / passenger</div>
+        </div>
+        <div class="row">
+          <div class="col l5 bold"></div>
+          <div class="col l7">
+            <% if @booking.new_record? %>
+              <%= f.submit "Proceed to Checkout", class: "btn" %>
+            <% else %>
+              <%= f.submit "Update", class: "btn" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

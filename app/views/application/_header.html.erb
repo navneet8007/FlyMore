@@ -1,0 +1,63 @@
+<div class="navbar-fixed">
+  <nav class="nav-color">
+    <div class="container">
+      <div class="nav-wrapper">
+        <div class="dropdown">
+        <a href="<%= root_path %>" class="brand-logo">FlyMore<i class="fas fa-fighter-jet"></i></a>
+        </div>
+        <ul class="pull-right hide-on-med-and-down top-nav">
+          <li><a href="<%= flights_path %>">All Flight</a></li>
+          <li><a href="<%= manage_bookings_path %>">Manage Bookings</a></li>
+        </ul>
+        <% if current_user %>
+          <ul class="right hide-on-med-and-down top-nav menu" id="menu">
+            <li>
+              <div>
+                <a class="dropdown-button-" href="#!" data-activates="dropdown1">
+                   <%= current_user.name %>
+                </a>
+              </div>
+
+              <ul>
+                <li><a href="<%= bookings_url %>" class="">My Bookings</a></li>
+                <li class="divider"></li>
+                <li><a href="<%= logout_url %>" class="">logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        <% else %>
+          <ul class="right hide-on-med-and-down top-nav" id="menu">
+            <li class="no-hover"><a href="<%= login_url %>" class="btn auth-btn">signin</a></li>
+            <li class="no-hover"><a href="<%= signup_url %>" class="btn auth-btn">signup</a></li>
+            <!-- <li><a href="mobile.html">Mobile</a></li> -->
+          <% end %>
+        </ul>
+<!--         <ul class="side-nav menu" id="mobile-demo">
+          <li><a href="<%= flights_path %>">All flight</a></li>
+          <li><a href="<%= manage_bookings_path %>">Manage bookings</a></li>
+          <%# if current_user %>
+            <li><a href="<%= login_url %>" class="">Past Booking</a></li>
+            <li><a href="<%#= "#" %>" class=""><%#= current_user.name %></a></li>
+            <li><a href="<%= logout_url %>" class="">logout</a></li>
+          <%# else %>
+            <li><a href="<%= login_url %>">signin</a></li>
+            <li><a href="<%= signup_url %>">signup</a></li>
+            <!-- <li><a href="mobile.html">Mobile</a></li> -->
+          <%# end %>
+        <!-- </ul> -->
+      </div>
+    </div>
+  </nav>
+</div>
+<div>
+  <% unless flash['notice'].nil? %>
+    <script type="text/javascript">
+      Materialize.toast("<span><%= flash['notice'] %></span>", 5000);
+    </script>
+  <% end %>
+  <% unless flash['alert'].nil? %>
+    <script type="text/javascript">
+      Materialize.toast("<span><%= flash['alert'] %></span>", 5000);
+    </script>
+  <% end %>
+<end>

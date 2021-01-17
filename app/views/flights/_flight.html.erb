@@ -1,0 +1,29 @@
+<% unless @presenter.flights.blank? %>
+  <table class="bordered">
+    <thead>
+      <tr>
+        <th colspan="2">Airline</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Departure</th>
+        <th>Arrival</th>
+        <th>Book</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @presenter.flights.each do |flight| %>
+        <tr>
+          <td><i class="fas fa-fighter-jet"></i></td>
+          <td><%= flight.airline %></td>
+          <td><%= flight.origin_airport.decorate.name_with_state %></td>
+          <td><%= flight.destination_airport.decorate.name_with_state %></td>
+          <td><%= flight.decorate.departure_d %> <br> <%= flight.decorate.departure_t %></td>
+          <td><%= flight.decorate.arrival_d %> <br> <%= flight.decorate.arrival_t %></td>
+          <td><%= link_to "book", book_flights_path(flight.id, @presenter.seats), class: "btn" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <span>No flight found for your search. You could search for a different day</span>
+<% end %>
