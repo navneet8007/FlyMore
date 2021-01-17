@@ -32,6 +32,8 @@ gem "font-awesome-sass"
 
 gem "faker"
 
+gem 'bigdecimal', '1.3.5'
+
 gem 'figaro'
 
 gem 'stripe'
